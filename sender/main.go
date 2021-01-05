@@ -14,11 +14,11 @@ import (
 )
 
 var (
-	fType        = flag.String("t", "direct", "proxy type (direct / socks5) [default: direct]")
-	fPort        = flag.Int("r", 44444, "where to listen for receiver [default: 44444]")
-	fGB          = flag.Int("n", 10, "number of gigabytes to transmit [default: 10]")
-	fConcurrency = flag.Int("c", 1, "number of concurrect connections [default: 1]")
-	fSocks5Port  = flag.Int("s", 1080, "socks5 port [default: 1080]")
+	fType        = flag.String("t", "direct", "proxy type (direct / socks5)")
+	fPort        = flag.Int("p", 44444, "where to listen for receiver")
+	fGB          = flag.Int("n", 10, "number of gigabytes to transmit")
+	fConcurrency = flag.Int("c", 1, "number of concurrect connections")
+	fSocks5Port  = flag.Int("s", 1080, "socks5 port")
 )
 
 func makeConnection() (net.Conn, error) {
@@ -97,5 +97,5 @@ func main() {
 	dataAmount := uint64(*fConcurrency) * uint64(*fGB)
 
 	speed := dataAmount * 1024 / uint64(elapsed)
-	fmt.Println("Sender:", dataAmount, "GB of data sent through", *fConcurrency, "connections in", elapsed, "seconds, with speed", speed, "MB/s.")
+	fmt.Println("Sender:", dataAmount, "GB of data sent through", *fConcurrency, "connections in", elapsed, "seconds\nspeed   ->  ", speed, "MB/s")
 }
