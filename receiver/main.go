@@ -8,7 +8,7 @@ import (
 )
 
 var (
-	fPort = flag.Int("port", 44444, "where to listen for receiver [default: 44444]")
+	fPort = flag.Int("p", 44444, "where to listen for receiver")
 )
 
 func receive(conn net.Conn) {
